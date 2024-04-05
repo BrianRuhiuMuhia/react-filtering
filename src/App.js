@@ -1,10 +1,9 @@
 import Navigation from "./Nav/Nav";
 import Products from "./Products/Products";
-import Recommended from "./Recommended/Recommended"
 import Sidebar from "./Sidebar/Sidebar";
 import {useState,useEffect} from 'react'
 import getData from "./db/db.js"
-import "./app.css"
+import "./style/app.css"
 function App() {
   const [data,setData]=useState([])
   const [search,setSearch]=useState("")
@@ -32,7 +31,7 @@ function App() {
    <Navigation setSearch={setSearch} search={search}/>
    <Sidebar reset={reset} filter={filter}/>
    <Products data={data} setData={setData} search={search}/>
-   <Recommended/>
+ 
    
     </div>
   );
