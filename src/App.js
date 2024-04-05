@@ -9,16 +9,28 @@ function App() {
   const [data,setData]=useState([])
   const [search,setSearch]=useState("")
   const [rData,setRData]=useState([])
+  function reset()
+  {
+    setData(rData)
+  }
+  function filter(category)
+  {
+    const itemCategory=data.filter((item)=>{
+      return item["category"]===category
+          })
+          setData(itemCategory)}
+  
   useEffect(()=>{
     getData().then((result)=>{
     setData(result)
     setRData(result)
+    console.log(result)
     })
         },[])
   return (
     <div className="app">
    <Navigation setSearch={setSearch} search={search}/>
-   <Sidebar rData={rData} data={data} setData={setData}/>
+   <Sidebar reset={reset} filter={filter}/>
    <Products data={data} setData={setData} search={search}/>
    <Recommended/>
    
