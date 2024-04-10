@@ -13,7 +13,8 @@ if(!Array.isArray(props.data))
     )
 }
 else{
-    items=props.data.filter((item)=>{
+    const tempData=[...props.data]
+    items=tempData.filter((item)=>{
 return item["title"].toLowerCase().includes(props.search.toLowerCase())
     }).map((obj)=>{
         return <Card title={obj['title']} category={obj['category']} image={obj['image']} price={obj['price']}/>

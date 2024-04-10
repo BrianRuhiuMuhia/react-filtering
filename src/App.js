@@ -25,7 +25,7 @@ const tempData=[...rData]
         }
   
   useEffect(()=>{
-    if(localData.length>0)
+    if(Array.isArray(localData))
     {
       setData(localData)
       setRData(localData)
