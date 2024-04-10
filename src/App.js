@@ -8,6 +8,8 @@ function App() {
   const [data,setData]=useState([])
   const [search,setSearch]=useState("")
   const [rData,setRData]=useState([])
+  const cachedData="data"
+  const localData=JSON.parse(localStorage.getItem(cachedData))
   function reset()
   {
     setData(rData)
@@ -23,10 +25,19 @@ const tempData=[...rData]
         }
   
   useEffect(()=>{
-    getData().then((result)=>{
+    if(localData.length>0)
+    {
+      setData(localData)
+      setRData(localData)
+    }
+    else{
+      getData().then((result)=>{
     setData(result)
     setRData(result)
+    localStorage.setItem(cachedData,JSON.stringify(result))
     })
+    }
+    
         },[])
   return (
     <div className="app">
