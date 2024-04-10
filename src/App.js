@@ -14,16 +14,18 @@ function App() {
   }
   function filter(category)
   {
-    const itemCategory=data.filter((item)=>{
+const tempData=[...rData]
+    const itemCategory=tempData.filter((item)=>{
       return item["category"]===category
           })
-          setData(itemCategory)}
+          setData(itemCategory)
+          
+        }
   
   useEffect(()=>{
     getData().then((result)=>{
     setData(result)
     setRData(result)
-    console.log(result)
     })
         },[])
   return (
